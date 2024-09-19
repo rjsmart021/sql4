@@ -2,6 +2,7 @@ import psycopg2
 import configparser
 import pandas as pd
 from sql_queries import*
+import mysql.connector
 
 #Connect to default database
 conn = psycopg2.connect("host=127.0.0.1 dbname={} user={} password={}".format(DB_NAME_DEFAULT,DB_USER,DB_PASSWORD))

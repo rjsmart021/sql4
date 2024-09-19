@@ -8,13 +8,13 @@ conn = psycopg2.connect("host=127.0.0.1 dbname={} user={} password={}".format(DB
 conn.set_session(autocommit=True)
 cur = conn.cursor
 #Add SQL Database
-cur.excecute("""CREATE TABLE Members (
+cur.execute("""CREATE TABLE Members (
     id INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     age INT,
 );""")
 conn.commit()
-cur.excecute("""CREATE TABLE WorkoutSessions (
+cur.execute("""CREATE TABLE WorkoutSessions (
     session_id INT PRIMARY KEY,
     member_id INT,
     session_date DATE,
@@ -26,13 +26,13 @@ conn.commit()
 #Close connction
 conn.close()
 def add_workout_session(member_id, date, duration_minutes, calories_burned):
-    cur.excecute("""INSERT INTO WorkoutSessions member_id, date, duration_minutes, calories_burned)
+    cur.execute("""INSERT INTO WorkoutSessions member_id, date, duration_minutes, calories_burned)
                     VALUES(%s,%s,%s,%s,%s,%d)""", row.tolist())
     conn.commit()
 
    
 def update_member_age(member_id, new_age):
-    cur.excecute( """UPDATE WorkoutSessions SET age = 'new_age' WHERE member_id = '234';""")
+    cur.execute( """UPDATE WorkoutSessions SET age = 'new_age' WHERE member_id = '234';""")
     conn.commit()
 
  # Example code structure
@@ -43,6 +43,6 @@ def delete_workout_session(session_id):
     
 
  def get_members_in_age_range(start_age, end_age):
-    cur.excecute("""SELECT * FROM Members WHERE Members BETWEEN 'start_age' AND 'end_age''""")
+    cur.execute("""SELECT * FROM Members WHERE Members BETWEEN 'start_age' AND 'end_age''""")
     conn.commit()
     %sql SELECT * FROM Members WHERE end_age ='40'

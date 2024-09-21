@@ -47,3 +47,11 @@ def delete_workout_session(session_id):
     cur.execute("""SELECT * FROM Members WHERE Members BETWEEN 'start_age' AND 'end_age''""")
     conn.commit()
     %sql SELECT * FROM Members WHERE end_age ='40'
+
+
+#Test 1
+add_workout_session(Member_id,10/20/2024,70min,130)
+update_member_age(Member_id,67)
+delete_workout_session(session_id)
+get_members_in_age_range((45, 55)
+DB_NAME_DEFAULT,DB_USER,DB_PASSWORD

@@ -54,7 +54,7 @@ def delete_workout_session(session_id):
 
 
 #Test 1
-add_member(Sz678, Fitzgera, Kangory, 23, Male)
+add_member(Sz678, Fitzgera, Kangory, 24, Male)
 add_workout_session(Sz678,10/20/2024,70min,130)
 update_member_age(Sz678,67)
 delete_workout_session(554567)

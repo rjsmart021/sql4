@@ -3,7 +3,9 @@ import configparser
 import pandas as pd
 from sql_queries import*
 import mysql.connector
-
+DB_NAME_DEFAULT = "SQL_1"
+DB_USER = "root"
+DB_PASSWORD = "HHappiness0621#"
 #Connect to default database
 conn = psycopg2.connect("host=127.0.0.1 dbname={} user={} password={}".format(DB_NAME_DEFAULT,DB_USER,DB_PASSWORD))
 conn.set_session(autocommit=True)
@@ -47,15 +49,13 @@ def delete_workout_session(session_id):
     conn.commit()
     
 
- def get_members_in_age_range(start_age, end_age):
+def get_members_in_age_range(start_age, end_age):
     cur.execute("""SELECT * FROM Members WHERE Members BETWEEN 'start_age' AND 'end_age''""")
     conn.commit()
-    %sql SELECT * FROM Members WHERE end_age ='40'
-
 
 #Test 1
 add_member(Sz678, Fitzgera, Kangory, 24, Male)
-add_workout_session(Sz678,10/20/2024,70min,130)
+add_workout_session(Sz678,10/20/2024,70,130)
 update_member_age(Sz678,67)
 delete_workout_session(554567)
-get_members_in_age_range((45, 55)
+get_members_in_age_range((45, 55))

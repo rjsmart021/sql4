@@ -1,4 +1,4 @@
-import psycopg2
+
 import configparser
 import pandas as pd
 from sql_queries import*

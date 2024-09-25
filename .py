@@ -7,8 +7,53 @@ DB_NAME_DEFAULT = "SQL_1"
 DB_USER = "root"
 DB_PASSWORD = "HHappiness0621#"
 #Connect to default database
-conn = psycopg2.connect("host=127.0.0.1 dbname={} user={} password={}".format(DB_NAME_DEFAULT,DB_USER,DB_PASSWORD))
-conn.set_session(autocommit=True)
+def connect_database():
+    """ COnnect to the MySQL database and return the connection object """
+
+    #Database connection parameters 
+    db_name = "e_commerce_db"
+    user = "user"
+    password = "password"
+    host = "localhost"
+
+    try:
+        conn = mysql.connector.connect(
+            database = db_name,
+            user = user,
+            password = password,
+            host = host
+        )
+
+        # Check if the connection si sucessful
+        print("Connected to MySQL database successfully")
+        return conn
+
+    except Error as e:
+        # Handling any connection errors
+        print(f"Error: {e}")
+        return None
+Create a database in your MySQL Workbench and fill the db_name, user and password with yours, then use that function to create a connection like:
+conn = connect_database()
+And use it inside the functions to perform the different operations, for example, this is a function to inser a member:
+def add_member(id, name, age):
+    """
+    Adds a new member to the 'Members' table.
+    This will also handle duplicate ID and constraint violations.
+    """
+    conn = connect_database()
+    if conn is not None: 
+        try:
+            cursor = conn.cursor()
+            sql_query = "INSERT INTO Members (id, name, age) VALUES (%s, %s, %s)"
+            cursor.execute(sql_query, (id, name, age))
+            conn.commit()
+            print(f"Member {name} added successfully.")
+        except Exception as e:
+            print(f"Error while adding member: {e}")
+        finally:
+            cursor.close()
+            conn.close()
+            print("MySQL connection is closed.")
 cur = conn.cursor
 #Add SQL Database
 cur.execute("""CREATE TABLE Members (

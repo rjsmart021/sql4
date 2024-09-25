@@ -85,17 +85,19 @@ def add_member(member_id,First_Name, Last_Name,age, Gender):
     
 def update_member_age(member_id, new_age):
     cur.execute( """UPDATE WorkoutSessions SET age = 'new_age' WHERE member_id = '234';""")
+                    VALUES(%s,%s,%s,%s,%s,%d)""", row.tolist())
     conn.commit()
 
  # Example code structure
 def delete_workout_session(session_id):
-    sql = """DELETE FROM WorkoutSessions WHERE name = 'session_id'"""
-    cur.excecute(sql)
+    cur.execute("""DELETE FROM WorkoutSessions WHERE name = 'session_id'""")
+                VALUES(%s,%s,%s,%s,%s,%d)""", row.tolist()
     conn.commit()
     
 
 def get_members_in_age_range(start_age, end_age):
     cur.execute("""SELECT * FROM Members WHERE Members BETWEEN 'start_age' AND 'end_age''""")
+                VALUES(%s,%s,%s,%s,%s,%d)""", row.tolist()
     conn.commit()
 
 #Test 1

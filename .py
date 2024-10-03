@@ -8,8 +8,7 @@ DB_USER = "root"
 DB_PASSWORD = "HHappiness0621#"
 #Connect to default database
 def connect_database():
-    """ COnnect to the MySQL database and return the connection object """
-
+    """ Connect to the MySQL database and return the connection object """
     #Database connection parameters 
     db_name = "e_commerce_db"
     user = "user"
@@ -97,7 +96,7 @@ def delete_workout_session(session_id):
 
 def get_members_in_age_range(start_age, end_age):
     cur.execute("""SELECT * FROM Members WHERE Members BETWEEN 'start_age' AND 'end_age''""")
-                VALUES(%s,%s,%s,%s,%s,%d)""", row.tolist()
+                VALUES(%s,%s,%s,%s,%s,%d), row.tolist()
     conn.commit()
 
 #Test 1
